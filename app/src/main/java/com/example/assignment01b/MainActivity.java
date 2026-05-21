@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double tempNum = Double.valueOf(enteredTemp);
                     double convertedTemp = 0.0;
                     int checkedId = radioGroup.getCheckedRadioButtonId();
-                    String convertTempString;
+                    String convertTempString = "";
 
                     if (checkedId == R.id.fToCButton) {
                         convertedTemp = (tempNum - 32.0) * ((double) 5 /9);
@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         convertedTemp = (tempNum *((double) 9 /5)) + 32;
                         convertTempString = convertedTemp + " F";
                     }
-
 
                     conversionResults.setText(convertTempString);
                 } catch (NumberFormatException exception) {
