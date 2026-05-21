@@ -19,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
  * Assignment 01B
  * MainActivity
  * Andrea Villamarin
+ * Debugged using Claude AI
  */
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
