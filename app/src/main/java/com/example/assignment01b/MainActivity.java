@@ -60,14 +60,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double tempNum = Double.valueOf(enteredTemp);
                     double convertedTemp = 0.0;
                     int checkedId = radioGroup.getCheckedRadioButtonId();
+                    String convertTempString;
 
                     if (checkedId == R.id.fToCButton) {
                         convertedTemp = (tempNum - 32.0) * ((double) 5 /9);
+                        convertTempString = convertedTemp + " C";
                     } else if (checkedId == R.id.cToFButton) {
                         convertedTemp = (tempNum *((double) 9 /5)) + 32;
+                        convertTempString = convertedTemp + " F";
                     }
 
-                    String convertTempString = convertedTemp + "";
+
                     conversionResults.setText(convertTempString);
                 } catch (NumberFormatException exception) {
                     CharSequence toastMsg = "Please enter a valid number.";
