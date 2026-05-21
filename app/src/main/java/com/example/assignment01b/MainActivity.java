@@ -6,12 +6,20 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+/**
+ * ITCS 4180-080, Summer '26
+ * Assignment 01B
+ * MainActivity
+ * Andrea Villamarin
+ */
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 tempEntered.setText("");
-                conversionResults.setText("");
+                conversionResults.setText("N/A");
                 radioGroup.clearCheck();
             }
         });
@@ -52,15 +60,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double tempNum = Double.valueOf(enteredTemp);
                     double convertedTemp = 0.0;
                     int checkedId = radioGroup.getCheckedRadioButtonId();
+
                     if (checkedId == R.id.fToCButton) {
                         convertedTemp = (tempNum - 32.0) * ((double) 5 /9);
                     } else if (checkedId == R.id.cToFButton) {
                         convertedTemp = (tempNum *((double) 9 /5)) + 32;
                     }
+
                     String convertTempString = convertedTemp + "";
                     conversionResults.setText(convertTempString);
                 } catch (NumberFormatException exception) {
-                    Log.d("error", "invalid number entered");
+                    CharSequence toastMsg = "Please enter a valid number.";
+                    Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_LONG).show();
                 }
 
             }
